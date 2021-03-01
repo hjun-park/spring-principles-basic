@@ -33,7 +33,8 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
-        @Bean
+        // 두 번째, init과 close를 따로 명시해 주는 경우
+        @Bean //(initMethod = "init", destroyMethod = "close")
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();  // 객체를 생성한 다음
             networkClient.seturl("http://hello-spring.dev");    // setter 이용 설정을 집어넣어줌 이렇게 하면 생성자 connect에 null값이 출력됨
