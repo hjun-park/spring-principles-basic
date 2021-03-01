@@ -21,6 +21,12 @@ repositories {
 }
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	// JAVA provider 사용
+	implementation 'javax.inject:javax.inject:1'
+
+	// web 라이브러리 추가 [ 아파치 톰캣 ]
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	//lombok 라이브러리 추가 시작
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
