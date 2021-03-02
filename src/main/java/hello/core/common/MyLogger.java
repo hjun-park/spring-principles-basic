@@ -1,6 +1,7 @@
 package hello.core.common;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -8,7 +9,7 @@ import javax.annotation.PreDestroy;
 import java.util.UUID;
 
 @Component
-@Scope(value="request") // request 스코프
+@Scope(value="request", proxyMode = ScopedProxyMode.TARGET_CLASS) // request 스코프 + 프록시모드
 public class MyLogger {
 
     private String uuid;
@@ -22,7 +23,7 @@ public class MyLogger {
         System.out.println("[" + uuid + "]" + "[" + requestURL + "] " + message);
     }
 
-    @PostConstruct
+    @PostConstruct  // 03. UUID 생성
     public void init() {
         uuid = UUID.randomUUID().toString();
         System.out.println("[" + uuid + "] request scope bean create:" + this);
